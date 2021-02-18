@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin {
-    private long a_id;
-    private String a_name;
-    private String a_pwd;
+public class Address {
+    private String address;
+    private String city;
+    private String state;
+    private String country;
+    private long zip;
 }
