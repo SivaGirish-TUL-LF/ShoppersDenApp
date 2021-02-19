@@ -1,8 +1,6 @@
 package com.shoppersDenApp.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -15,5 +13,5 @@ public class Customer {
     private String pwd;
     private String secretQ;
     private String secretA;
-    private long uid;
+    private long customer_id;
 }

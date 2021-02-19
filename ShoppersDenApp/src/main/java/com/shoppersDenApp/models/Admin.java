@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Admin {
-    private long a_id;
     private String a_name;
     private String a_pwd;
 }
