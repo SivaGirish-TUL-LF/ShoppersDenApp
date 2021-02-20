@@ -16,6 +16,7 @@ public class TransactionDaoImpl implements TransactionDao{
     private ResourceBundle resourceBundle;
     private PreparedStatement transactionPrepStatement;
     private PreparedStatement transactionUploadPrepStatement;
+    private PreparedStatement allTransactionsStatement;
 
     public TransactionDaoImpl() throws SQLException {
         conn = PostgresConnHelper.getConnection();
@@ -36,10 +37,26 @@ public class TransactionDaoImpl implements TransactionDao{
             transactionPrepStatement.setLong(1,customer.getCustomer_id());
             transactionPrepStatement.setDate(2, Date.valueOf(LocalDate.now()));
             ResultSet res = transactionPrepStatement.executeQuery();
-            System.out.println("Product Id /t Product Name /t Qty Purchased /t Cost /t Date Of Purchase");
+            System.out.println("Product Id \t Product Name \t Qty Purchased \t Cost \t Date Of Purchase");
             System.out.println("========================================================================================");
             while (res.next()){
-                System.out.println(res.getString("prod_id") + " /t " + res.getString("prod_name") + " /t " + res.getInt("qty") + " /t " + res.getDouble("cost") + " /t " + res.getDate("dop"));
+                System.out.println(res.getString("prod_id") + " \t " + res.getString("product_name") + " \t " + res.getInt("quantity") + " \t " + res.getDouble("cost") + " \t " + res.getDate("dop"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void displayAllTransaction() {
+        String allTransactionsQuery = resourceBundle.getString("getAllTransaction");
+        try{
+            allTransactionsStatement = conn.prepareStatement(allTransactionsQuery);
+            ResultSet res = allTransactionsStatement.executeQuery();
+            System.out.println("Product Id \t Qty Purchased \t Cost \t Date Of Purchase");
+            System.out.println("========================================================================================");
+            while (res.next()){
+                System.out.println(res.getString("prod_id") + " \t " + res.getString("product_name") + " \t " + res.getInt("quantity") + " \t " + res.getDouble("cost") + " \t " + res.getDate("dop"));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

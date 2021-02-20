@@ -5,5 +5,6 @@ import com.shoppersDenApp.models.Customer;
 
 public interface TransactionDao {
     void displayTransactions(Customer customer);
+    void displayAllTransaction();
     void uploadTransaction(Cart cart);
 }

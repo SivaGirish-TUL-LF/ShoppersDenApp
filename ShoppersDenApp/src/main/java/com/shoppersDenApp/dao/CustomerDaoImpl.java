@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class CustomerDaoImpl implements CustomerDao{
     private final Connection conn;
     private Cart cart;
-    private boolean flag;
+    private boolean flag = false;
     private PreparedStatement loginPrepStatement;
     private PreparedStatement registerPrepStatement;
     private PreparedStatement addressPrepStatement;

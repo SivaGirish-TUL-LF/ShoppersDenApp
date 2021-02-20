@@ -39,20 +39,20 @@ public class Main {
         customer.setPwd("Sam123#");
         customer.setSecretA("Whale");
         customer.setSecretQ("What is my favourite animal?");
-        Address addr = new Address();
-        addr.setAddress("Electronic City");
-        addr.setCity("Bangalore");
-        addr.setState("Karnataka");
-        addr.setCountry("India");
-        addr.setZip(560083);
-        customer.setAddress(addr);
-        customerDao.register(customer);
+        Address address = new Address();
+        address.setAddress("Electronic City");
+        address.setCity("Bangalore");
+        address.setState("Karnataka");
+        address.setCountry("India");
+        address.setZip(560083);
+        customer.setAddress(address);
+        //customerDao.register(customer);
         customerDao.login(customer.getEmail(),customer.getPwd());
-        customerDao.addToCart(productList.get(2),3);
-        customerDao.addToCart(productList.get(3),5);
+        customerDao.addToCart(productList.get(1),3);
+        customerDao.addToCart(productList.get(2),5);
         customerDao.updateCart(productList.get(4),6);
         //customerDao.updateCart(productList.get(3),3);
-        customerDao.removeItemFromCart(productList.get(2));
+        // customerDao.removeItemFromCart(productList.get(2));
         customerDao.pay();
     }
 }
