@@ -4,12 +4,12 @@ import com.shoppersDenApp.helpers.PostgresConnHelper;
 import com.shoppersDenApp.models.Cart;
 import com.shoppersDenApp.models.Customer;
 import com.shoppersDenApp.models.Product;
+import com.shoppersDenApp.models.Transaction;
 
 import java.sql.*;
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class TransactionDaoImpl implements TransactionDao{
     private Connection conn;
@@ -56,7 +56,7 @@ public class TransactionDaoImpl implements TransactionDao{
             System.out.println("Product Id \t Qty Purchased \t Cost \t Date Of Purchase");
             System.out.println("========================================================================================");
             while (res.next()){
-                System.out.println(res.getString("prod_id") + " \t " + res.getString("product_name") + " \t " + res.getInt("quantity") + " \t " + res.getDouble("cost") + " \t " + res.getDate("dop"));
+                System.out.println(res.getLong("prod_id") + " \t " + res.getString("product_name") + " \t " + res.getInt("quantity") + " \t " + res.getDouble("cost") + " \t " + res.getDate("dop"));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -84,5 +84,30 @@ public class TransactionDaoImpl implements TransactionDao{
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Transaction> sendTransactionList() {
+        String allTransactionsQuery = resourceBundle.getString("getAllTransaction");
+        List<Transaction> transactionList = new ArrayList<Transaction>(10);
+        Transaction transaction;
+        try{
+            allTransactionsStatement = conn.prepareStatement(allTransactionsQuery);
+            ResultSet res = allTransactionsStatement.executeQuery();
+            while (res.next()){
+                transaction = new Transaction();
+                transaction.setProductId(res.getLong("prod_id"));
+                transaction.setProductName(res.getString("product_name"));
+                transaction.setQuantity(res.getInt("quantity"));
+                transaction.setCost(res.getDouble("cost"));
+                transaction.setDop(res.getDate("dop").toLocalDate());
+                transaction.setCustomerId(res.getLong("customer_id"));
+                transaction.setTransactionId(res.getLong("transaction_id"));
+                transactionList.add(transaction);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return transactionList;
     }
 }

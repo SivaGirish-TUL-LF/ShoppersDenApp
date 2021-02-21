@@ -23,4 +23,5 @@ public class AdminTest {
     public void adminLoginTest(){
         assertTrue(adminDao.login("Dan","Dan123#"));
     }
+
 }

@@ -2,9 +2,11 @@ package com.shoppersDenApp.dao;
 
 import com.shoppersDenApp.helpers.PostgresConnHelper;
 import com.shoppersDenApp.models.Product;
+import com.shoppersDenApp.models.Transaction;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminDaoImpl implements AdminDao{
@@ -132,5 +134,11 @@ public class AdminDaoImpl implements AdminDao{
     public void viewTransactions() throws SQLException {
         TransactionDao transactionDao = new TransactionDaoImpl();
         transactionDao.displayAllTransaction();
+    }
+
+    @Override
+    public List<Transaction> getAllTransactions() throws SQLException {
+        TransactionDao transactionDao = new TransactionDaoImpl();
+        return transactionDao.sendTransactionList();
     }
 }

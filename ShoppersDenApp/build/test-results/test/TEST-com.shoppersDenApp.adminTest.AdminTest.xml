@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.shoppersDenApp.adminTest.AdminTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-21T17:05:37" hostname="R-Shivas-MacBook-Pro.local" time="0.068">
+  <properties/>
+  <testcase name="Login Successful?" classname="com.shoppersDenApp.adminTest.AdminTest" time="0.068"/>
+  <system-out><![CDATA[Connection Established Successfully
+Welcome Dan
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
