@@ -1,0 +1,6 @@
+com/shoppersDenApp/models/ProductTest.java
+ com.shoppersDenApp.models.ProductTest
+com/shoppersDenApp/adminTest/AdminTest.java
+ com.shoppersDenApp.adminTest.AdminTest
+com/shoppersDenApp/customerTest/CustomerTest.java
+ com.shoppersDenApp.customerTest.CustomerTest

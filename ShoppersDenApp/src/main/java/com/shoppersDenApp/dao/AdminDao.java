@@ -10,6 +10,6 @@ public interface AdminDao {
     void deleteProduct(int Prod_id);
     void updateAccount(String name,String pwd,String npwd) throws SQLException;
     void addCategory(String Category_name);
-    void login(String name,String pwd);
+    boolean login(String name,String pwd);
     void viewTransactions() throws SQLException;
 }

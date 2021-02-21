@@ -103,7 +103,7 @@ public class AdminDaoImpl implements AdminDao{
     }
 
     @Override
-    public void login(String name, String pwd) {
+    public boolean login(String name, String pwd) {
         String adminLoginQuery = resourceBundle.getString("adminLogin");
         long temp;
         try{
@@ -119,13 +119,13 @@ public class AdminDaoImpl implements AdminDao{
                 }
                 else {
                     System.out.println("Invalid Credentials");
-                    return;
+                    return false;
                 }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
+        return loginFlag;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.shoppersDenApp.helpers.PostgresConnHelper;
 import com.shoppersDenApp.models.Cart;
 import com.shoppersDenApp.models.Customer;
 import com.shoppersDenApp.models.Product;
+import lombok.Getter;
 
 import java.sql.*;
 import java.util.Hashtable;
@@ -54,7 +55,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
 
     @Override
-    public void login(String email,String pwd) {
+    public boolean login(String email,String pwd) {
         String loginQuery = resourceBundle.getString("loginQuery");
         flag = false;
         long c_id = 0;
@@ -83,6 +84,7 @@ public class CustomerDaoImpl implements CustomerDao{
         else{
             System.out.println("Invalid credentials");
         }
+        return flag;
     }
 
     @Override
